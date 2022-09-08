@@ -16,13 +16,11 @@ impulse(sys);
 title('Impulse Response');
 subplot(3,1,3)
 step(sys/s);
-xlim([0 50]);
 title("Ramp response");
 
 %overshoot, risetime dan settling time
-s1 = stepinfo(sys);
-disp(s1);
+disp(stepinfo(sys));
 
 %steady state error
 [y,t]=step(sys);
-sserror=(1-y(end));
+disp(1-y(end));
