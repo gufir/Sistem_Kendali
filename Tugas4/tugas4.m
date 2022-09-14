@@ -1,9 +1,8 @@
-% bersih bersih
-clearvars
-clc
-close all
+clear all;
+clc;
+close all;
 
-%membuat persamaan plant
+%Persamaan plant
 
 T = 16;
 s = tf('s');
@@ -14,12 +13,12 @@ plant = tf(num,den);
 kp = 1;
 ki = [1 3 5 7 9];
 
-%deklarasi variable control
+%Deklarasi variable control
 control = tf(zeros(1,1,5));
 sys=tf(zeros(1,1,5));
 complete=tf(zeros(1,1,5));
 
-%menentukan transfer function sistem
+%Menentukan transfer function sistem
 for x = 1:5
     control(:,:,x) = (kp*s + ki(x))/s;
     sys(:,:,x) = plant*control(:,:,x);
