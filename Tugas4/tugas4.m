@@ -18,7 +18,7 @@ control = tf(zeros(1,1,5));
 sys=tf(zeros(1,1,5));
 complete=tf(zeros(1,1,5));
 
-%Menentukan transfer function sistem
+%Transfer function sistem
 for x = 1:5
     control(:,:,x) = (kp*s + ki(x))/s;
     sys(:,:,x) = plant*control(:,:,x);
@@ -33,11 +33,10 @@ for x = 1:5
 
     step(complete(:,:,x));
     title(['Step Response KI: ',num2str(ki(x))])
-    
-    %xlim([290 310]);
+  
     % Mencari karakteristik gelombang 
     tf_info(x)= stepinfo(complete(:,:,x));
-    % mencari steady state error
+    % Steady state error
     [y,t]=step(complete(:,:,x));
     sserror(x)=(1-y(end));
     
@@ -46,7 +45,6 @@ for x = 1:5
     subplot(3,2,x)
     impulse(complete(:,:,x));
     title(['Impulse Response KI: ',num2str(ki(x))])
-    %xlim([290 310]);
     
     % Ramp Repsonse 
     figure(3)
