@@ -31,10 +31,10 @@ for x = 1:5
     step(complete(:,:,x));
     title(['Step Response Kd: ',num2str(kd(x))])
     % Rise Time, Settling Time, Overshoot
-    tf_info(x)= stepinfo(complete(:,:,x));
+    tf_info(x)= stepinfo(complete(:,:,x))
     % Steady State Error
     [y,t]=step(complete(:,:,x));
-    sserror(x)=(1-y(end));
+    sserror(x)=(1-y(end))
     
     % Impulse Repsonse    
     figure(2)
